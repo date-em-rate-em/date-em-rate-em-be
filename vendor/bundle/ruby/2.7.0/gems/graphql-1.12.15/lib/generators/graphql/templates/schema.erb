@@ -1,0 +1,15 @@
+<% module_namespacing_when_supported do -%>
+class <%= schema_name %> < GraphQL::Schema
+  query(Types::QueryType)
+<% if options[:batch] %>
+  # GraphQL::Batch setup:
+  use GraphQL::Batch
+<% end %>
+  # Union and Interface Resolution
+  def self.resolve_type(abstract_type, obj, ctx)
+    # TODO: Implement this function
+    # to return the correct object type for `obj`
+    raise(GraphQL::RequiredImplementationMissingError)
+  end
+end
+<% end -%>
