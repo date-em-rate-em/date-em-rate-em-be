@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+- 2.7.2
+script:
+  - bundle exec rails db:{create,migrate} RAILS_ENV=test
+
+  # - bundle exec rspec
+deploy:
+  provider: heroku
+  app:
+  api_key:
+    secure:
+  run: rails db:migrate
