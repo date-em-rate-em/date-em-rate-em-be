@@ -1,0 +1,17 @@
+type Mutation {
+  """
+  All of the users
+  """
+  allUsers: [User!]!
+}
+
+type Query {
+  allUsers: [User!]!
+  singleUser(id: ID!): User!
+}
+
+type User {
+  email: String!
+  id: ID!
+  passwordDigest: String!
+}
