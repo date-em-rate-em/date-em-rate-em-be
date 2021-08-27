@@ -4,8 +4,8 @@ rvm:
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 deploy:
-  api_key:
   provider: heroku
+  api_key:
     secure: YMPyJB5vTFNWDsSm1HpRqdYTahUzkDVmCblGX9OX+b+1Y/OryMucNJk6gaDhpuBQR3rqb/G16m3RNsA78tyLQlQwxv3v1HYwkykXhDiv46VRCGh/W5nbP+wfTnCVqKqvlshJXwJElKxd94LpjS1whBmCCIr1+IT3ML56202w3qr1qu/H9eOZpYuEd3gOlSatR6toPMJfN7Y0bzapvVgBhttA0vn8RI17PYBDJep99ORDHuScHEVmiXreMOsA1m3ipVFtHgu/4dJZ6Qw4TZa5tXO2XBcO49gyCcStabM8/ONUYlxGI3vfP6AeBsP5s3CWP6oMKfipJ7mK/4iwxiqIMHPPFJPYzw4pkyzcquMcVvm0TYq5SeNlQXKEx+b8PjTa0ctQ+hKO/8ig6AHtv9qdIv8GzKHDCs9lYV6LECF5Qgjaq3SkL1QDdMfG5RO5z8xj2G+k40tZWRccvH1/xfmIPsT4A8gBQMPnd81dE1zu0rYW3ArS9NunNC1Y3S5z8gUY4JSsD+lwVan4d+6/6VAU2DKViMMZuEnTSk9C7c2KKazwJy6soljEQPYRupVWfT+YLlfYEewah/00TXNFx3nULx9EJPKkjXlLPGpN5M8LIB+fUXgpTJpIr4SKFN7YVU8Q/jQatwMnpOEAZbBoaDqSP1/IeUckJYyh9Nv3Bo9dJSA=
   app: date-em-rate-em-be
   run: rails db:migrate
