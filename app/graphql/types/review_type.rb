@@ -9,7 +9,7 @@ module Types
     field :high_to_low_ratings, [Types::ReviewType], null: true
 
     def high_to_low_ratings
-      Review.all.order(rating: :desc)
+      Review.order(rating: :desc)
     end
   end
 end
