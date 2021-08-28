@@ -24,5 +24,18 @@ module Types
     def single_client(id:)
       Client.find(id)
     end
+
+    #REVIEW
+    field :all_reviews, [Types::ReviewType], null: false
+    def all_reviews
+      Review.all
+    end
+
+    field :single_review, Types::ReviewType, null: false do
+      argument :id, ID, required: true
+    end
+    def single_review(id:)
+      Review.find(id)
+    end
   end
 end
