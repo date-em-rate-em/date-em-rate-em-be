@@ -1,6 +1,6 @@
-User.destroy_all
-Client.destroy_all
 Review.destroy_all
+Client.destroy_all
+User.destroy_all
 
 
 @user_1 = User.create!(email: Faker::Internet.email, password: "test", password_confirmation: "test")
