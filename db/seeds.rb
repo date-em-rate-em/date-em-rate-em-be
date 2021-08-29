@@ -17,15 +17,150 @@ Review.destroy_all
 
 @review_1 = Review.create!(
   rating: Faker::Number.between(from: 1, to: 5),
-  body: Faker::Lorem.paragraph,
+  body: Faker::Lorem.sentence,
   user: @user_1 ,
-  client: @client_1)
-@review_2 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_2 ,client: @client_2)
-@review_3 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_3 ,client: @client_3)
-@review_4 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_4 ,client: @client_4)
-@review_5 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_5 ,client: @client_5)
-@review_6 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_1 ,client: @client_5)
-@review_7 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_2 ,client: @client_4)
-@review_8 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_3 ,client: @client_3)
-@review_9 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_4 ,client: @client_2)
-@review_10 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_5 ,client: @client_1)
+  client: @client_1,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_2 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_2 ,
+  client: @client_2,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_3 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_3 ,
+  client: @client_3,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_4 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_4 ,
+  client: @client_4,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_5 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_5 ,
+  client: @client_5,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_6 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_1 ,
+  client: @client_5,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_7 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_2 ,
+  client: @client_4,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_8 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_3,
+  client: @client_2,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_9 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_4 ,
+  client: @client_3,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
+
+@review_10 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.sentence,
+  user: @user_5 ,
+  client: @client_1,
+  title: Faker::Lorem.words(number: 3).join(" "),
+  size: Faker::Number.between(from: 1, to: 15),
+  payment: Faker::Number.between(from: 1, to: 5000),
+  extended_body: Faker::Lorem.paragraph,
+  kindness: Faker::Number.between(from: 1, to: 10),
+  vibe: Faker::Number.between(from: 1, to: 10),
+  date_again: Faker::Boolean.boolean,
+  safety_meter: Faker::Number.between(from: 1, to: 10),
+  gender: Faker::Gender.type)
