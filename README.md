@@ -23,4 +23,7 @@ Things you may want to cover:
 
 * Travis CI for organization
 
-* Cores Whitelist
+* Cors Whitelist
+
+* Testing
+  - Run rails graphql:schema:dump in the terminal to create a schema dump
