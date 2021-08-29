@@ -1,17 +1,36 @@
 type Mutation {
-  """
-  All of the users
-  """
-  allUsers: [User!]!
 }
 
 type Query {
+  allClients: [User!]!
+  allReviews: [Review!]!
   allUsers: [User!]!
+  reviewsByRatingHighToLow: [Review!]!
+  singleClient(id: ID!): User!
+  singleReview(id: ID!): Review!
   singleUser(id: ID!): User!
+}
+
+type Review {
+  body: String
+  clientId: Int!
+  dateAgain: Boolean
+  extendedBody: String
+  gender: String
+  id: ID!
+  kindness: Int
+  payment: Int
+  rating: Int!
+  safetyMeter: Int!
+  size: Float
+  title: String
+  userId: Int
+  vibe: Int
 }
 
 type User {
   email: String!
   id: ID!
   passwordDigest: String!
+  reviews: [Review!]
 }
