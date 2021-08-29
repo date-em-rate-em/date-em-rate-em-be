@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_28_184714) do
+ActiveRecord::Schema.define(version: 2021_08_29_162034) do
 
   create_table "clients", force: :cascade do |t|
     t.string "email"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_08_28_184714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rating"
+    t.string "title"
+    t.float "size"
+    t.integer "payment"
+    t.string "extended_body"
+    t.integer "kindness"
+    t.integer "vibe"
+    t.boolean "date_again"
+    t.integer "safety_meter"
+    t.string "gender"
     t.index ["client_id"], name: "index_reviews_on_client_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

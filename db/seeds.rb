@@ -15,7 +15,11 @@ Review.destroy_all
 @client_4 = Client.create!(email: Faker::Internet.email)
 @client_5 = Client.create!(email: Faker::Internet.email)
 
-@review_1 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_1 ,client: @client_1)
+@review_1 = Review.create!(
+  rating: Faker::Number.between(from: 1, to: 5),
+  body: Faker::Lorem.paragraph,
+  user: @user_1 ,
+  client: @client_1)
 @review_2 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_2 ,client: @client_2)
 @review_3 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_3 ,client: @client_3)
 @review_4 = Review.create!(rating: Faker::Number.between(from: 1, to: 5), body: Faker::Lorem.paragraph, user: @user_4 ,client: @client_4)
