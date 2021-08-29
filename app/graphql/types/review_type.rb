@@ -6,10 +6,10 @@ module Types
     field :body, String, null: false
     field :rating, Integer, null: false
 
-    field :high_to_low_ratings, [Types::ReviewType], null: true
-
-    def high_to_low_ratings
-      Review.order(rating: :desc)
-    end
+    # field :high_to_low_ratings, [Types::ReviewType], null: true
+    #
+    # def high_to_low_ratings
+    #   Review.order(rating: :desc)
+    # end
   end
 end

@@ -39,9 +39,15 @@ module Types
       Review.all
     end
 
-    field :single_review, Types::ReviewType, null: false do
+  field :reviews_by_rating_high_to_low, [Types::ReviewType], null: false
+    def reviews_by_rating_high_to_low
+      Review.order(rating: :desc)
+    end
+
+  field :single_review, Types::ReviewType, null: false do
       argument :id, ID, required: true
     end
+    
     def single_review(id:)
       Review.find(id)
     end
