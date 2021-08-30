@@ -19,20 +19,20 @@ module Mutations
     field :review, Types::ReviewType, null: false
     field :user, Types::UserType, null: false
     field :client, Types::ClientType, null: false
-    
+
     def resolve(
-        user_id:, 
-        client_email:, 
-        rating:, 
-        safety_meter:, 
-        body: nil, 
-        title: nil, 
+        user_id:,
+        client_email:,
+        rating:,
+        safety_meter:,
+        body: nil,
+        title: nil,
         size: nil,
-        payment: nil, 
-        extended_body: nil, 
-        kindness: nil, 
-        vibe: nil, 
-        date_again: nil, 
+        payment: nil,
+        extended_body: nil,
+        kindness: nil,
+        vibe: nil,
+        date_again: nil,
         gender: nil)
 
       @user = User.find(user_id)
