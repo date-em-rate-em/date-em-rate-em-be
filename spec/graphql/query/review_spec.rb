@@ -11,7 +11,7 @@ RSpec.describe 'single_review', type: :request  do
       safety_meter: Faker::Number.between(from: 1, to: 10)
     )
 
-    query_string = "{ singleReview(id: 1) { rating } }"
+    query_string = "{ singleReview(id: #{review_1.id}) { rating } }"
     post graphql_path(params: { query: query_string })
     json_response = JSON.parse(@response.body, symbolize_names: true)
 

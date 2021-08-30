@@ -26,6 +26,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
+gem 'pg'
+# gem 'rails_12factor'
+
 # use graphql for database management
 gem 'graphql'
 
@@ -39,7 +42,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'pry'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'simplecov'
 end
 
@@ -49,11 +51,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'graphiql-rails'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
