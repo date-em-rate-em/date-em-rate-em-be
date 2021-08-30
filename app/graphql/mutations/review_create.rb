@@ -1,5 +1,5 @@
 module Mutations
-  class ReviewMutation < BaseMutation
+  class ReviewCreate < BaseMutation
 
     argument :user_id, ID, required: true
     # argument :client_number, Integer, required: false
@@ -16,7 +16,9 @@ module Mutations
     argument :safety_meter, Integer, required: true
     argument :gender, String, required: false
 
-    type Types::ReviewType
+    field :review, Types::ReviewType, null: false
+    field :user, Types::UserType, null: false
+    field :client, Types::ClientType, null: false
     
     def resolve(
         user_id:, 
@@ -25,7 +27,7 @@ module Mutations
         safety_meter:, 
         body: nil, 
         title: nil, 
-        size: nil, 
+        size: nil,
         payment: nil, 
         extended_body: nil, 
         kindness: nil, 
@@ -44,7 +46,12 @@ module Mutations
 
       @review.save
 
-      @review
+      {
+        review: @review,
+        user: @user,
+        client: @client
+      }
+
     end
   end
 end

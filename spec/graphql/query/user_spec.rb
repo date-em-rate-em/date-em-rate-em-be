@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'single_user' do
+RSpec.describe 'single_user', type: :request  do
   it 'returns a single user' do
     user_1 = User.create!(email: Faker::Internet.email, password: "test", password_confirmation: "test")
 

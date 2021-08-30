@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'single_review' do
+RSpec.describe 'single_review', type: :request  do
   it 'returns a single review' do
     client_1 = Client.create!(email: Faker::Internet.email)
     user_1 = User.create!(email: Faker::Internet.email, password: "test", password_confirmation: "test")

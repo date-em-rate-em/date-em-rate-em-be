@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'all_clients' do
+RSpec.describe 'all_clients', type: :request  do
   it 'returns all clients' do
     5.times do
       Client.create!(email: Faker::Internet.email)
