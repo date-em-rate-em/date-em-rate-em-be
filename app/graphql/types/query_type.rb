@@ -11,7 +11,7 @@ module Types
     field :all_users, [Types::UserType], null: false
     def all_users
       User.all
-    end
+  end
 
     field :single_user, Types::UserType, null: false do
       argument :id, ID, required: true
