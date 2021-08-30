@@ -1,4 +1,5 @@
 type Mutation {
+  reviewMutation(body: String, clientEmail: String, dateAgain: Int, extendedBody: String, gender: String, kindness: Int, payment: Int, rating: Int!, safetyMeter: Int!, size: Float, title: String, userId: ID!, vibe: Int): Review!
 }
 
 type Query {
