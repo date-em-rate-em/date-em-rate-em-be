@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_08_29_162034) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clients", force: :cascade do |t|
     t.string "email"
     t.datetime "created_at", null: false
@@ -19,8 +22,8 @@ ActiveRecord::Schema.define(version: 2021_08_29_162034) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "client_id"
+    t.bigint "user_id"
+    t.bigint "client_id"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,4 +47,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_162034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "reviews", "clients"
+  add_foreign_key "reviews", "users"
 end
