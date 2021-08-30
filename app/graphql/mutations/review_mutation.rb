@@ -14,12 +14,25 @@ module Mutations
     argument :vibe, Integer, required: false
     argument :date_again, Integer, required: false
     argument :safety_meter, Integer, required: true
-    argument :gender, String, reqired: false
+    argument :gender, String, required: false
 
     type Types::ReviewType
+    
+    def resolve(
+        user_id:, 
+        client_email:, 
+        rating:, 
+        safety_meter:, 
+        body: nil, 
+        title: nil, 
+        size: nil, 
+        payment: nil, 
+        extended_body: nil, 
+        kindness: nil, 
+        vibe: nil, 
+        date_again: nil, 
+        gender: nil)
 
-    def resolve(user_id:, client_email:, body:, rating:, title:, size:, payment:, extended_body:, kindness:, vibe:, date_again:, safety_meter:, gender:)
-      require 'pry'; binding.pry
       @user = User.find(user_id)
       if Client.where(email: client_email).empty?
         @client = Client.create!(email: client_email)
@@ -27,15 +40,11 @@ module Mutations
         @client = Client.find_by(email: client_email)
       end
 
-      @review = Review.new(client: @client, user: @user, body: body, rating: rating, title: title, size: size, payment: payment, extended_body: extended_body, kindness: kindness, vibe: vibe, date_again: date_again, safety_meter: safety_meter)
+      @review = Review.create!(client: @client, user: @user, body: body, rating: rating, title: title, size: size, payment: payment, extended_body: extended_body, kindness: kindness, vibe: vibe, date_again: date_again, safety_meter: safety_meter)
 
       @review.save
 
-      {
-        review: @review,
-        client: @client,
-        user: @user
-      }
+      @review
     end
   end
 end
