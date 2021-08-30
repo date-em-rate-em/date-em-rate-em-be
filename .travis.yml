@@ -3,6 +3,11 @@ rvm:
 - 2.7.2
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+before_script:
+  - psql -c 'create database db_test;' -U postgres
+services:
+  - postgresql
 deploy:
   provider: heroku
   api_key:
