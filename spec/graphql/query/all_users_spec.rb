@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'all_users' do
+RSpec.describe 'all_users', type: :request  do
   it 'returns all users' do
     5.times do
       User.create!(email: Faker::Internet.email, password: "test", password_confirmation: "test")

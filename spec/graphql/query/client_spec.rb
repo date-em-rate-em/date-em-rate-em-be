@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'single_client' do
+RSpec.describe 'single_client', type: :request  do
   it 'returns a single client' do
     client_1 = Client.create!(email: Faker::Internet.email)
 

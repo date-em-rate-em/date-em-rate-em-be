@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'reviews_by_rating_high_to_low' do
-  it 'returns all reviews by rating desc' do
+RSpec.describe 'all_reviews', type: :request  do
+  it 'returns all reviews' do
     5.times do
       client = Client.create!(email: Faker::Internet.email)
       user = User.create!(email: Faker::Internet.email, password: "test", password_confirmation: "test")
@@ -13,13 +13,12 @@ RSpec.describe 'reviews_by_rating_high_to_low' do
       )
     end
 
-    query_string = "{ reviewsByRatingHighToLow { rating } }"
+    query_string = "{ allReviews { rating } }"
     post graphql_path(params: { query: query_string })
     json_response = JSON.parse(@response.body, symbolize_names: true)
 
     expected = Review.all.pluck(:rating)
-    expected.sort!.reverse!
-    actual = json_response[:data][:reviewsByRatingHighToLow].map do |review|
+    actual = json_response[:data][:allReviews].map do |review|
       review[:rating]
     end
     expect(actual).to eq(expected)
