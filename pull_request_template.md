@@ -5,7 +5,6 @@
 ## Checklist
 - [ ] Tests written where required
 - [ ] All tests passing
-- [ ] SimpleCov at 100%
-- [ ] RuboCop complaints resolved
+- [ ] SimpleCov at 95%
 
 closes #
