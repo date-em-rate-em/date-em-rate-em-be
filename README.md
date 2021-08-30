@@ -26,4 +26,4 @@ Things you may want to cover:
 * Cors Whitelist
 
 * Testing
-  - Run rails graphql:schema:dump in the terminal to create a schema dump
+  - Run `rails graphql:schema:dump` in the terminal to create a schema dump
