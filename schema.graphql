@@ -11,11 +11,10 @@ type Mutation {
 }
 
 type Query {
-  allClients: [User!]!
-  allReviews: [Review!]!
+  allClients: [Client!]!
+  allReviews(orderBy: String): [Review!]!
   allUsers: [User!]!
-  reviewsByRatingHighToLow: [Review!]!
-  singleClient(id: ID!): User!
+  singleClient(id: ID!): Client!
   singleReview(id: ID!): Review!
   singleUser(id: ID!): User!
 }
@@ -58,7 +57,6 @@ type ReviewEditPayload {
 type User {
   email: String!
   id: ID!
-  passwordDigest: String!
   reviews: [Review!]
 }
 
