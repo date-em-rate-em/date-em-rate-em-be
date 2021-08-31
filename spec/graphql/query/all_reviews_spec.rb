@@ -52,6 +52,18 @@ RSpec.describe 'all_reviews', type: :request  do
       end
     end
   end
+  describe 'field that does not exit' do
+    it 'returns an error' do
+      post graphql_path(params: { query: query(order_by: 'girth') })
+      json_response = JSON.parse(@response.body, symbolize_names: true)
+      
+      actual = json_response[:errors][0][:message]
+      expected = "Invalid order_by argument for allReviews"
+      
+      expect(actual).to eq(expected)
+    end
+  end
+
   def query(order_by:)
     <<~GQL
       {
@@ -63,5 +75,5 @@ RSpec.describe 'all_reviews', type: :request  do
         }
       }
     GQL
-end
+  end
 end
