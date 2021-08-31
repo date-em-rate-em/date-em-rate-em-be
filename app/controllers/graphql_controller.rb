@@ -14,6 +14,8 @@ class GraphqlController < ApplicationController
     }
     result = DateEmRateEmBeSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
+  rescue ActiveRecord::StatementInvalid => e
+    render json: { errors: [{ message: "Invalid order_by argument for #{params['query'].split(' ')[1][0..-2]}" }], data: {} }, status: 404
   rescue StandardError => e
     raise e unless Rails.env.development?
     handle_error_in_development(e)
