@@ -2,7 +2,6 @@ module Mutations
   class ReviewCreate < BaseMutation
 
     argument :user_id, ID, required: true
-    # argument :client_number, Integer, required: false
     argument :client_email, String, required: false
     argument :body, String, required: false
     argument :rating, Integer, required: true
