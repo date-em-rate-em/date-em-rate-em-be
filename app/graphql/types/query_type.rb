@@ -43,8 +43,7 @@ module Types
       def all_reviews(order_by:)
         order_by = 'id' if order_by.empty?
         Review.order("#{order_by} DESC, id")
-
-      end 
+      end
 
       field :single_review, Types::ReviewType, null: false do
         argument :id, ID, required: true
