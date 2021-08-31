@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby 2.7.2
 
 * System dependencies
 
@@ -22,6 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * Travis CI for organization
+
+* Wiki for Api schema
+  https://slimwiki.com/date-em-and-rate-em
 
 * Cors Whitelist
 
