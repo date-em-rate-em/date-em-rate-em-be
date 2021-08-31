@@ -43,6 +43,7 @@ module Types
       def all_reviews(order_by:)
         order_by = 'id' if order_by.empty?
         Review.order("#{order_by} DESC, id")
+
       end 
 
       field :single_review, Types::ReviewType, null: false do
@@ -51,6 +52,5 @@ module Types
       def single_review(id:)
         Review.find(id)
       end
-
   end
 end
