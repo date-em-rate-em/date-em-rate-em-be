@@ -1,5 +1,9 @@
 type Client {
+  averageKindness: Float
   averageRating: Float
+  averageSafetyMeter: Float
+  averageSize: Float
+  averageVibe: Float
   email: String!
   id: ID!
   reviews: [Review!]
