@@ -35,6 +35,13 @@ module Types
         Client.find(id)
       end
 
+      field :client_email, [Types::ClientType], null: false do
+        argument :email, String, required: true
+      end
+      def client_email(email:)
+        Client.where("email ILIKE ?", "%#{email}%")
+      end
+
     # REVIEWS -----------------------------------------------
 
       field :all_reviews, [Types::ReviewType], null: false do

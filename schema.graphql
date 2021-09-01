@@ -1,4 +1,5 @@
 type Client {
+  averageRating: Float
   email: String!
   id: ID!
   reviews: [Review!]
@@ -14,6 +15,7 @@ type Query {
   allClients: [Client!]!
   allReviews(orderBy: String): [Review!]!
   allUsers: [User!]!
+  clientEmail(email: String!): [Client!]!
   singleClient(id: ID!): Client!
   singleReview(id: ID!): Review!
   singleUser(id: ID!): User!
