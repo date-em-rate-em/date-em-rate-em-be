@@ -1,5 +1,5 @@
 type Client {
-  averageRating: Int
+  averageRating: Float
   email: String!
   id: ID!
   reviews: [Review!]
