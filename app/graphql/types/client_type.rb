@@ -8,6 +8,7 @@ module Types
     field :average_safety_meter, Float, null: true
     field :average_size, Float, null: true
     field :average_kindness, Float, null: true
+    field :average_vibe, Float, null: true
 
     def average_rating
       self.object.reviews.average(:rating)
@@ -23,6 +24,10 @@ module Types
 
     def average_kindness
       self.object.reviews.average(:kindness)
+    end
+
+    def average_vibe
+      self.object.reviews.average(:vibe)
     end
   end
 end
