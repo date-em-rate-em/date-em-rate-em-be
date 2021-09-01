@@ -1,4 +1,5 @@
 type Client {
+  averageRating: Int
   email: String!
   id: ID!
   reviews: [Review!]
