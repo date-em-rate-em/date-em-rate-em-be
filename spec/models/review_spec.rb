@@ -44,7 +44,7 @@ RSpec.describe Review, type: :model do
 
     it do
       should validate_numericality_of(:size).
-      is_greater_than_or_equal_to(1).
+      is_greater_than_or_equal_to(0).
         is_less_than_or_equal_to(18)
     end
     
