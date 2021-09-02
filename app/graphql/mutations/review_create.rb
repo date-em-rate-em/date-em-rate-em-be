@@ -19,6 +19,7 @@ module Mutations
     field :user, Types::UserType, null: false
     field :client, Types::ClientType, null: false
 
+
     def resolve(
         user_id:,
         client_email:,
