@@ -68,6 +68,14 @@ module Mutations
       { 
         error: error
       }
+    rescue ActiveRecord::RecordInvalid => e
+      error = Error.new(
+        message: e.message,
+        status: 405
+      )
+      {
+        error: error
+      }
     end
   end
 end
