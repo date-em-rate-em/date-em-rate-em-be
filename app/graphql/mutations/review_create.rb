@@ -11,7 +11,7 @@ module Mutations
     argument :extended_body, String, required: false
     argument :kindness, Integer, required: false
     argument :vibe, Integer, required: false
-    argument :date_again, Integer, required: false
+    argument :date_again, String, required: false
     argument :safety_meter, Integer, required: true
     argument :gender, String, required: false
 
