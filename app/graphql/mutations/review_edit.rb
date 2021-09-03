@@ -60,22 +60,22 @@ module Mutations
         user: user,
         client: client
       }
-    rescue ActiveRecord::RecordNotFound
-      error = Error.new(
-        message: 'Could not find a review with that ID',
-        status: 404
-      )
-      { 
-        error: error
-      }
-    rescue ActiveRecord::RecordInvalid => e
-      error = Error.new(
-        message: e.message,
-        status: 405
-      )
-      {
-        error: error
-      }
+    # rescue ActiveRecord::RecordNotFound
+    #   error = Error.new(
+    #     message: 'Could not find a review with that ID',
+    #     status: 404
+    #   )
+    #   { 
+    #     error: error
+    #   }
+    # rescue ActiveRecord::RecordInvalid => e
+    #   error = Error.new(
+    #     message: e.message,
+    #     status: 405
+    #   )
+    #   {
+    #     error: error
+    #   }
     end
   end
 end
