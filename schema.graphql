@@ -28,7 +28,7 @@ type Query {
 type Review {
   body: String
   clientId: Int!
-  dateAgain: Boolean
+  dateAgain: String
   extendedBody: String
   gender: String
   id: ID!
