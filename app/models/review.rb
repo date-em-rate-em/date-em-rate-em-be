@@ -11,7 +11,7 @@ class Review < ApplicationRecord
   validates :safety_meter, numericality: { greater_than_or_equal_to: 1 }
   validates :safety_meter, numericality: { less_than_or_equal_to: 10 }
   validates :size, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
-  validates :size, numericality: { less_than_or_equal_to: 18, allow_nil: true }
+  validates :size, numericality: { less_than_or_equal_to: 12, allow_nil: true }
   validates :payment, numericality: { greater_than_or_equal_to: 1, allow_nil: true }
   validates :payment, numericality: { less_than_or_equal_to: 10, allow_nil: true }
   validates :kindness, numericality: { greater_than_or_equal_to: 1, allow_nil: true }
