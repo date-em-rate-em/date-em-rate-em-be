@@ -9,7 +9,9 @@ RSpec.describe 'create user', type: :request do
         password: "password",
         password_confirmation: "password"
         ) }
+
       json_response = JSON.parse(response.body, symbolize_names: true)
+
       actual = json_response[:data][:userCreate][:user][:email]
 
       expect(actual).to eq("email@test.com")
