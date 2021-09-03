@@ -62,7 +62,7 @@ RSpec.describe 'edit review', type: :request do
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
           actual = [json_response[:data][:reviewEdit][:error][:message], json_response[:data][:reviewEdit][:error][:status]]
-          expected = ["Validation failed: Size must be less than or equal to 18", 405]
+          expected = ["Could not find a review with that ID", 404]
           
           expect(actual).to eq(expected)
         end
