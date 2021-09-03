@@ -39,12 +39,12 @@ RSpec.describe 'edit review', type: :request do
             rating: 4,
             safety_meter: 8
           )
-          post graphql_path, params: { query: mutation(review_id: 0, size: 7.0, body: "laddy daddy we Like to party") }
+          review_id = 0
+          post graphql_path, params: { query: mutation(review_id: review_id, size: 7.0, body: "laddy daddy we Like to party") }
           json_response = JSON.parse(@response.body, symbolize_names: true)
+          actual = [json_response[:errors][0][:message], response.status]
+          expected = ["Couldn't find Review with 'id'=#{review_id}", 404]
 
-          actual = [json_response[:data][:reviewEdit][:error][:message], json_response[:data][:reviewEdit][:error][:status]]
-          expected = ["Could not find a review with that ID", 404]
-          
           expect(actual).to eq(expected)
         end
       end
@@ -60,10 +60,9 @@ RSpec.describe 'edit review', type: :request do
           )
           post graphql_path, params: { query: mutation(review_id: review.id, size: 26, body: "laddy daddy we Like to party") }
           json_response = JSON.parse(@response.body, symbolize_names: true)
+          actual = [json_response[:errors][0][:message], response.status]
+          expected = ["Validation failed: Size must be less than or equal to 12", 405]
 
-          actual = [json_response[:data][:reviewEdit][:error][:message], json_response[:data][:reviewEdit][:error][:status]]
-          expected = ["Could not find a review with that ID", 404]
-          
           expect(actual).to eq(expected)
         end
       end

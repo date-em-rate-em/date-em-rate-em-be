@@ -44,28 +44,31 @@ module Mutations
       date_again ||= review.date_again
       gender ||= review.gender
 
-      review.update!(
-        body: body,
-        title: title,
-        size: size,
-        payment: payment,
-        extended_body: extended_body,
-        kindness: kindness,
-        vibe: vibe,
-        date_again: date_again
-      )
+      if review.update(
+          body: body,
+          title: title,
+          size: size,
+          payment: payment,
+          extended_body: extended_body,
+          kindness: kindness,
+          vibe: vibe,
+          date_again: date_again
+        )
 
-      {
-        review: review,
-        user: user,
-        client: client
-      }
+        {
+          review: review,
+          user: user,
+          client: client
+        }
+      else
+        raise ActiveRecord::RecordInvalid.new review
+      end
     # rescue ActiveRecord::RecordNotFound
     #   error = Error.new(
     #     message: 'Could not find a review with that ID',
     #     status: 404
     #   )
-    #   { 
+    #   {
     #     error: error
     #   }
     # rescue ActiveRecord::RecordInvalid => e
