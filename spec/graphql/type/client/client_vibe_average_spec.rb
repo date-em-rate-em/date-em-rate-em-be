@@ -10,6 +10,7 @@ RSpec.describe 'client_vibe_average', type: :request  do
             user: user,
             client: client,
             rating: Faker::Number.between(from: 1, to: 5),
+            safety_meter: Faker::Number.between(from: 1, to: 10),
             vibe: Faker::Number.between(from: 1, to: 10)
           )
       end

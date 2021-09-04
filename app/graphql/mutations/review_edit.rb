@@ -9,12 +9,12 @@ module Mutations
     argument :extended_body, String, required: false
     argument :kindness, Integer, required: false
     argument :vibe, Integer, required: false
-    argument :date_again, Integer, required: false
+    argument :date_again, String, required: false
     argument :gender, String, required: false
 
-    field :review, Types::ReviewType, null: false
-    field :user, Types::UserType, null: false
-    field :client, Types::ClientType, null: false
+    field :review, Types::ReviewType, null: true
+    field :user, Types::UserType, null: true
+    field :client, Types::ClientType, null: true
 
     def resolve(
         review_id:,

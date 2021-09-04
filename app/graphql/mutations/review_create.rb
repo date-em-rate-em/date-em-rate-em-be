@@ -11,7 +11,7 @@ module Mutations
     argument :extended_body, String, required: false
     argument :kindness, Integer, required: false
     argument :vibe, Integer, required: false
-    argument :date_again, Integer, required: false
+    argument :date_again, String, required: false
     argument :safety_meter, Integer, required: true
     argument :gender, String, required: false
 
@@ -41,16 +41,17 @@ module Mutations
         @client = Client.find_by(email: client_email)
       end
 
-      @review = Review.create!(client: @client, user: @user, body: body, rating: rating, title: title, size: size, payment: payment, extended_body: extended_body, kindness: kindness, vibe: vibe, date_again: date_again, safety_meter: safety_meter)
+      @review = Review.create(client: @client, user: @user, body: body, rating: rating, title: title, size: size, payment: payment, extended_body: extended_body, kindness: kindness, vibe: vibe, date_again: date_again, safety_meter: safety_meter)
 
-      @review.save
-
-      {
-        review: @review,
-        user: @user,
-        client: @client
-      }
-
+      if @review.save
+        {
+          review: @review,
+          user: @user,
+          client: @client
+        }
+      else
+        raise ActiveRecord::RecordInvalid.new @review
+      end
     end
   end
 end

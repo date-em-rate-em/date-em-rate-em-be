@@ -11,8 +11,10 @@ module Types
     field :extended_body, String, null: true
     field :kindness, Integer, null: true
     field :vibe, Integer, null: true
-    field :date_again, Boolean, null: true
+    field :date_again, String, null: true
     field :safety_meter, Integer, null: false
     field :gender, String, null: true
+    field :created_at, GraphQL::Types::ISO8601DateTime, null: true
+    field :updated_at, GraphQL::Types::ISO8601DateTime, null: true
   end
 end
