@@ -15,7 +15,6 @@ module Mutations
     field :review, Types::ReviewType, null: true
     field :user, Types::UserType, null: true
     field :client, Types::ClientType, null: true
-    field :error, Types::ErrorType, null: true
 
     def resolve(
         review_id:,
@@ -60,22 +59,6 @@ module Mutations
         user: user,
         client: client
       }
-    # rescue ActiveRecord::RecordNotFound
-    #   error = Error.new(
-    #     message: 'Could not find a review with that ID',
-    #     status: 404
-    #   )
-    #   { 
-    #     error: error
-    #   }
-    # rescue ActiveRecord::RecordInvalid => e
-    #   error = Error.new(
-    #     message: e.message,
-    #     status: 405
-    #   )
-    #   {
-    #     error: error
-    #   }
     end
   end
 end

@@ -9,7 +9,9 @@ module Mutations
     def resolve(email:, password:, password_confirmation:)
       user = User.new(email: email, password: password, password_confirmation: password_confirmation)
       if user.save
-        {user: user}
+        {
+          user: user
+        }
       else
         raise ActiveRecord::RecordInvalid.new user
       end
