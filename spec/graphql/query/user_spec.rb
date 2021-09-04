@@ -25,7 +25,7 @@ RSpec.describe 'single_user', type: :request  do
       json_response = JSON.parse(@response.body, symbolize_names: true)
 
       expected = "Couldn't find User with 'id'=0"
-      actual = json_response[:errors][:message]
+      actual = json_response[:errors][0][:message]
       
       expect(actual).to eq(expected)
       end
