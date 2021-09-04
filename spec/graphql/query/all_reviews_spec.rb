@@ -14,7 +14,7 @@ RSpec.describe 'all_reviews', type: :request  do
     end
   end
   it 'returns all reviews' do
-    post graphql_path(params: { query: query(order_by: nil) })
+    post graphql_path(params: { query: query })
     json_response = JSON.parse(@response.body, symbolize_names: true)
 
     expected = Review.all.pluck(:rating)
@@ -24,52 +24,11 @@ RSpec.describe 'all_reviews', type: :request  do
     
     expect(actual.sort!).to eq(expected.sort!)
   end
-  describe 'order_by' do
-    describe 'rating' do
-      it 'returns the reviews ordered by ratings' do
-        post graphql_path(params: { query: query(order_by: 'rating') })
-        json_response = JSON.parse(@response.body, symbolize_names: true)
 
-        
-        expected = Review.all.pluck(:rating).sort!.reverse!
-        actual = json_response[:data][:allReviews].map do |review|
-          review[:rating]
-        end
-        expect(actual).to eq(expected)
-      end
-    end
-    describe 'safety_meter' do
-      it 'returns the reviews ordered by safety_meter' do
-        post graphql_path(params: { query: query(order_by: 'safety_meter') })
-        json_response = JSON.parse(@response.body, symbolize_names: true)
-
-        
-        expected = Review.order("safety_meter DESC, id").pluck(:rating)
-        actual = json_response[:data][:allReviews].map do |review|
-          review[:rating]
-        end
-        expect(actual).to eq(expected)
-      end
-    end
-  end
-  describe 'field that does not exit' do
-    it 'returns an error' do
-      post graphql_path(params: { query: query(order_by: 'girth') })
-      json_response = JSON.parse(@response.body, symbolize_names: true)
-      
-      actual = json_response[:errors][0][:message]
-      expected = "Invalid order_by argument for allReviews"
-      
-      expect(actual).to eq(expected)
-    end
-  end
-
-  def query(order_by:)
+  def query
     <<~GQL
       {
-        allReviews(
-          orderBy: "#{order_by}"
-        )
+        allReviews
         {
           rating
         }

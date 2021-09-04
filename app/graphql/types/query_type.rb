@@ -44,12 +44,9 @@ module Types
 
     # REVIEWS -----------------------------------------------
 
-      field :all_reviews, [Types::ReviewType], null: false do
-        argument :order_by, String, required: false
-      end
-      def all_reviews(order_by:)
-        order_by = 'id' if order_by.empty?
-        Review.order("#{order_by} DESC, id")
+      field :all_reviews, [Types::ReviewType], null: false
+      def all_reviews
+        Review.all
       end
 
       field :single_review, Types::ReviewType, null: false do
