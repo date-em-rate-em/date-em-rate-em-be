@@ -51,7 +51,8 @@ module Mutations
         extended_body: extended_body,
         kindness: kindness,
         vibe: vibe,
-        date_again: date_again
+        date_again: date_again,
+        gender: gender
       )
 
       {
