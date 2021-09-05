@@ -12,7 +12,7 @@ module Types
     field :safety_meter, Integer, null: false
     field :gender, String, null: true
     field :hygiene, Integer, null: true
-    field :duration, Integer, null: true
+    field :duration, Float, null: true
     field :condoms, String, null: true
     field :punctuality, String, null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: true
