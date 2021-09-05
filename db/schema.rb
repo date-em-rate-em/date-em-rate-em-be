@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_040458) do
+ActiveRecord::Schema.define(version: 2021_09_05_170238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_040458) do
     t.integer "hygiene"
     t.string "punctuality"
     t.string "condoms"
-    t.integer "duration"
+    t.float "duration"
     t.index ["client_id"], name: "index_reviews_on_client_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

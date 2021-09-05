@@ -9,7 +9,7 @@ module Mutations
     argument :date_again, String, required: false
     argument :gender, String, required: false
     argument :hygiene, Integer, required: false
-    argument :duration, Integer, required: false
+    argument :duration, Float, required: false
     argument :condoms, String, required: false
     argument :punctuality, String, required: false
 
