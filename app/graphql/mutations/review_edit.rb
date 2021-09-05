@@ -3,14 +3,15 @@ module Mutations
 
     argument :review_id, ID, required: true
     argument :body, String, required: false
-    argument :title, String, required: false
     argument :size, Float, required: false
     argument :payment, Integer, required: false
-    argument :extended_body, String, required: false
-    argument :kindness, Integer, required: false
     argument :vibe, Integer, required: false
     argument :date_again, String, required: false
     argument :gender, String, required: false
+    argument :hygine, Integer, required: false
+    argument :duration, Integer, required: false
+    argument :condoms, String, required: false
+    argument :punctuality, String, required: false
 
     field :review, Types::ReviewType, null: true
     field :user, Types::UserType, null: true
@@ -19,13 +20,14 @@ module Mutations
     def resolve(
         review_id:,
         body: nil,
-        title: nil,
         size: nil,
         payment: nil,
-        extended_body: nil,
-        kindness: nil,
-        vibe: nil,
         date_again: nil,
+        punctuality: nil,
+        condoms: nil,
+        duration: nil,
+        vibe: nil,
+        hygine: nil,
         gender: nil
       )
 
@@ -33,25 +35,28 @@ module Mutations
       client = Client.find(review.client_id)
       user = User.find(review.user_id)
       body ||= review.body
-      title ||= review.title
       gender ||= review.gender
       size ||= review.size
       payment ||= review.payment
-      extended_body ||= review.extended_body
-      kindness ||= review.kindness
       vibe ||= review.vibe
       date_again ||= review.date_again
       gender ||= review.gender
+      hygine ||= review.hygine
+      duration ||= review.duration
+      condoms ||= review.condoms
+      punctuality ||= review.punctuality
+
 
       review.update!(
         body: body,
-        title: title,
         size: size,
         payment: payment,
-        extended_body: extended_body,
-        kindness: kindness,
         vibe: vibe,
         date_again: date_again,
+        hygine: hygine,
+        punctuality: punctuality,
+        condoms: condoms,
+        duration: duration,
         gender: gender
       )
 

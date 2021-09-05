@@ -14,8 +14,10 @@ class Review < ApplicationRecord
   validates :size, numericality: { less_than_or_equal_to: 12, allow_nil: true }
   validates :payment, numericality: { greater_than_or_equal_to: 1, allow_nil: true }
   validates :payment, numericality: { less_than_or_equal_to: 10, allow_nil: true }
-  validates :kindness, numericality: { greater_than_or_equal_to: 1, allow_nil: true }
-  validates :kindness, numericality: { less_than_or_equal_to: 10, allow_nil: true }
+  validates :hygine, numericality: { greater_than_or_equal_to: 1, allow_nil: true }
+  validates :hygine, numericality: { less_than_or_equal_to: 10, allow_nil: true }
   validates :vibe, numericality: { greater_than_or_equal_to: 1, allow_nil: true }
   validates :vibe, numericality: { less_than_or_equal_to: 10, allow_nil: true }
+  validates :duration, numericality: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :duration, numericality: { less_than_or_equal_to: 24, allow_nil: true }
 end
