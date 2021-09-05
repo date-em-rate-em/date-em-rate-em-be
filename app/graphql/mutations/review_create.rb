@@ -12,7 +12,7 @@ module Mutations
     argument :safety_meter, Integer, required: true
     argument :gender, String, required: false
     argument :hygiene, Integer, required: false
-    argument :duration, Integer, required: false
+    argument :duration, Float, required: false
     argument :condoms, String, required: false
     argument :punctuality, String, required: false
 
@@ -44,16 +44,32 @@ module Mutations
         @client = Client.find_by(email: client_email)
       end
 
+      if size == -1
+        size = nil
+      end
+      if payment == -1
+        payment = nil
+      end
+      if hygiene == -1
+        hygiene = nil
+      end
+      if duration == -1
+        duration = nil
+      end
+      if vibe == -1
+        vibe = nil
+      end
+
       @review = Review.create!(
-        client: @client, 
-        user: @user, 
-        body: body, 
-        rating: rating, 
-        size: size, 
-        payment: payment, 
-        vibe: vibe, 
-        date_again: date_again, 
-        safety_meter: safety_meter, 
+        client: @client,
+        user: @user,
+        body: body,
+        rating: rating,
+        size: size,
+        payment: payment,
+        vibe: vibe,
+        date_again: date_again,
+        safety_meter: safety_meter,
         gender: gender,
         hygiene: hygiene,
         punctuality: punctuality,
