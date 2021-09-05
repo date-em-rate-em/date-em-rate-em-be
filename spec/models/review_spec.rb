@@ -31,9 +31,15 @@ RSpec.describe Review, type: :model do
     end
 
     it do
-      should validate_numericality_of(:kindness).
+      should validate_numericality_of(:hygine).
       is_greater_than_or_equal_to(1).
         is_less_than_or_equal_to(10)
+    end
+
+    it do
+      should validate_numericality_of(:duration).
+      is_greater_than_or_equal_to(0).
+        is_less_than_or_equal_to(24)
     end
 
     it do
