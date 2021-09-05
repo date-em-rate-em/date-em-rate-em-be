@@ -1,5 +1,6 @@
 type Client {
-  averageKindness: Float
+  averageDuration: Float
+  averageHygiene: Float
   averageRating: Float
   averageSafetyMeter: Float
   averageSize: Float
@@ -17,8 +18,8 @@ An ISO 8601-encoded datetime
 scalar ISO8601DateTime
 
 type Mutation {
-  reviewCreate(body: String, clientEmail: String, dateAgain: String, extendedBody: String, gender: String, kindness: Int, payment: Int, rating: Int!, safetyMeter: Int!, size: Float, title: String, userId: ID!, vibe: Int): ReviewCreatePayload!
-  reviewEdit(body: String, dateAgain: String, extendedBody: String, gender: String, kindness: Int, payment: Int, reviewId: ID!, size: Float, title: String, vibe: Int): ReviewEditPayload!
+  reviewCreate(body: String, clientEmail: String, condoms: String, dateAgain: String, duration: Int, gender: String, hygiene: Int, payment: Int, punctuality: String, rating: Int!, safetyMeter: Int!, size: Float, userId: ID!, vibe: Int): ReviewCreatePayload!
+  reviewEdit(body: String, condoms: String, dateAgain: String, duration: Int, gender: String, hygiene: Int, payment: Int, punctuality: String, reviewId: ID!, size: Float, vibe: Int): ReviewEditPayload!
   userCreate(email: String!, password: String!, passwordConfirmation: String!): UserCreatePayload!
 }
 
@@ -35,17 +36,18 @@ type Query {
 type Review {
   body: String
   clientId: Int!
+  condoms: String
   createdAt: ISO8601DateTime
   dateAgain: String
-  extendedBody: String
+  duration: Int
   gender: String
+  hygiene: Int
   id: ID!
-  kindness: Int
   payment: Int
+  punctuality: String
   rating: Int!
   safetyMeter: Int!
   size: Float
-  title: String
   updatedAt: ISO8601DateTime
   userId: Int
   vibe: Int

@@ -5,15 +5,17 @@ module Mutations
     argument :client_email, String, required: false
     argument :body, String, required: false
     argument :rating, Integer, required: true
-    argument :title, String, required: false
     argument :size, Float, required: false
     argument :payment, Integer, required: false
-    argument :extended_body, String, required: false
-    argument :kindness, Integer, required: false
     argument :vibe, Integer, required: false
     argument :date_again, String, required: false
     argument :safety_meter, Integer, required: true
     argument :gender, String, required: false
+    argument :hygiene, Integer, required: false
+    argument :duration, Integer, required: false
+    argument :condoms, String, required: false
+    argument :punctuality, String, required: false
+
 
     field :review, Types::ReviewType, null: false
     field :user, Types::UserType, null: false
@@ -25,11 +27,12 @@ module Mutations
         rating:,
         safety_meter:,
         body: nil,
-        title: nil,
         size: nil,
         payment: nil,
-        extended_body: nil,
-        kindness: nil,
+        hygiene: nil,
+        punctuality: nil,
+        condoms: nil,
+        duration: nil,
         vibe: nil,
         date_again: nil,
         gender: nil)
@@ -46,15 +49,17 @@ module Mutations
         user: @user, 
         body: body, 
         rating: rating, 
-        title: title, 
         size: size, 
         payment: payment, 
-        extended_body: extended_body, 
-        kindness: kindness, 
         vibe: vibe, 
         date_again: date_again, 
         safety_meter: safety_meter, 
-        gender: gender)
+        gender: gender,
+        hygiene: hygiene,
+        punctuality: punctuality,
+        condoms: condoms,
+        duration: duration
+      )
 
       if @review.save
         {
