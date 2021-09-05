@@ -44,6 +44,22 @@ module Mutations
         @client = Client.find_by(email: client_email)
       end
 
+      if size == -1
+        size = nil
+      end
+      if payment == -1
+        payment = nil
+      end
+      if hygiene == -1
+        hygiene = nil
+      end
+      if duration == -1
+        duration = nil
+      end
+      if vibe == -1
+        vibe = nil
+      end
+
       @review = Review.create!(
         client: @client, 
         user: @user, 
