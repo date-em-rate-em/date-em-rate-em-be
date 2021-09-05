@@ -26,7 +26,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -41,7 +41,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -56,7 +56,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -71,7 +71,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -86,7 +86,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -101,7 +101,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -116,7 +116,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -131,7 +131,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -146,7 +146,7 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
 
@@ -161,6 +161,6 @@ User.destroy_all
   extended_body: Faker::Lorem.paragraph,
   kindness: Faker::Number.between(from: 1, to: 10),
   vibe: Faker::Number.between(from: 1, to: 10),
-  date_again: Faker::Boolean.boolean,
+  date_again: Faker::Lorem.word,
   safety_meter: Faker::Number.between(from: 1, to: 10),
   gender: Faker::Gender.type)
