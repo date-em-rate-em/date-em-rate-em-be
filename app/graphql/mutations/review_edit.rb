@@ -34,6 +34,23 @@ module Mutations
       review = Review.find(review_id)
       client = Client.find(review.client_id)
       user = User.find(review.user_id)
+
+      if size == -1
+        size = nil
+      end
+      if payment == -1
+        payment = nil
+      end
+      if hygiene == -1
+        hygiene = nil
+      end
+      if duration == -1
+        duration = nil
+      end
+      if vibe == -1
+        vibe = nil
+      end
+
       body ||= review.body
       gender ||= review.gender
       size ||= review.size
