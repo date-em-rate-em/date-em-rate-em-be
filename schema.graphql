@@ -1,6 +1,7 @@
 type Client {
   averageDuration: Float
   averageHygiene: Float
+  averagePayment: Float
   averageRating: Float
   averageSafetyMeter: Float
   averageSize: Float

@@ -53,6 +53,20 @@
               "deprecationReason": null
             },
             {
+              "name": "averagePayment",
+              "description": null,
+              "args": [
+
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "averageRating",
               "description": null,
               "args": [

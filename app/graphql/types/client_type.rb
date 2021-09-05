@@ -12,9 +12,14 @@ module Types
     field :average_hygiene, Float, null: true
     field :average_duration, Float, null: true
     field :average_vibe, Float, null: true
+    field :average_payment, Float, null: true
 
     def average_rating
       self.object.reviews.average(:rating)
+    end
+
+    def average_payment
+      self.object.reviews.average(:payment)
     end
 
     def average_safety_meter
