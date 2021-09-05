@@ -11,7 +11,7 @@ module Types
     field :date_again, String, null: true
     field :safety_meter, Integer, null: false
     field :gender, String, null: true
-    field :hygine, Integer, null: true
+    field :hygiene, Integer, null: true
     field :duration, Integer, null: true
     field :condoms, String, null: true
     field :punctuality, String, null: true

@@ -8,7 +8,7 @@ module Mutations
     argument :vibe, Integer, required: false
     argument :date_again, String, required: false
     argument :gender, String, required: false
-    argument :hygine, Integer, required: false
+    argument :hygiene, Integer, required: false
     argument :duration, Integer, required: false
     argument :condoms, String, required: false
     argument :punctuality, String, required: false
@@ -27,7 +27,7 @@ module Mutations
         condoms: nil,
         duration: nil,
         vibe: nil,
-        hygine: nil,
+        hygiene: nil,
         gender: nil
       )
 
@@ -41,7 +41,7 @@ module Mutations
       vibe ||= review.vibe
       date_again ||= review.date_again
       gender ||= review.gender
-      hygine ||= review.hygine
+      hygiene ||= review.hygiene
       duration ||= review.duration
       condoms ||= review.condoms
       punctuality ||= review.punctuality
@@ -53,7 +53,7 @@ module Mutations
         payment: payment,
         vibe: vibe,
         date_again: date_again,
-        hygine: hygine,
+        hygiene: hygiene,
         punctuality: punctuality,
         condoms: condoms,
         duration: duration,

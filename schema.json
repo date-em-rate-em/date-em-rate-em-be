@@ -39,7 +39,7 @@
               "deprecationReason": null
             },
             {
-              "name": "averageHygine",
+              "name": "averageHygiene",
               "description": null,
               "args": [
 
@@ -384,7 +384,7 @@
                   "deprecationReason": null
                 },
                 {
-                  "name": "hygine",
+                  "name": "hygiene",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -537,7 +537,7 @@
                   "deprecationReason": null
                 },
                 {
-                  "name": "hygine",
+                  "name": "hygiene",
                   "description": null,
                   "type": {
                     "kind": "SCALAR",
@@ -1009,7 +1009,7 @@
               "deprecationReason": null
             },
             {
-              "name": "hygine",
+              "name": "hygiene",
               "description": null,
               "args": [
 

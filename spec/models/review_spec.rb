@@ -31,7 +31,7 @@ RSpec.describe Review, type: :model do
     end
 
     it do
-      should validate_numericality_of(:hygine).
+      should validate_numericality_of(:hygiene).
       is_greater_than_or_equal_to(1).
         is_less_than_or_equal_to(10)
     end

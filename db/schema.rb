@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_025414) do
+ActiveRecord::Schema.define(version: 2021_09_05_040458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_025414) do
     t.integer "safety_meter"
     t.string "gender"
     t.string "date_again"
-    t.integer "hygine"
+    t.integer "hygiene"
     t.string "punctuality"
     t.string "condoms"
     t.integer "duration"

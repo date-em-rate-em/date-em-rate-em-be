@@ -11,7 +11,7 @@ module Mutations
     argument :date_again, String, required: false
     argument :safety_meter, Integer, required: true
     argument :gender, String, required: false
-    argument :hygine, Integer, required: false
+    argument :hygiene, Integer, required: false
     argument :duration, Integer, required: false
     argument :condoms, String, required: false
     argument :punctuality, String, required: false
@@ -29,7 +29,7 @@ module Mutations
         body: nil,
         size: nil,
         payment: nil,
-        hygine: nil,
+        hygiene: nil,
         punctuality: nil,
         condoms: nil,
         duration: nil,
@@ -55,7 +55,7 @@ module Mutations
         date_again: date_again, 
         safety_meter: safety_meter, 
         gender: gender,
-        hygine: hygine,
+        hygiene: hygiene,
         punctuality: punctuality,
         condoms: condoms,
         duration: duration
