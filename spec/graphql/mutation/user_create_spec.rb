@@ -6,21 +6,21 @@ RSpec.describe 'create user', type: :request do
       it 'creates client and review' do
 
         post graphql_path, params: { query: mutation(
-          email: "email@test.com",
-          password: "password",
-          password_confirmation: "password"
+              email: "email@test.com",
+              password: "password",
+              password_confirmation: "password"
           ) }
 
         json_response = JSON.parse(response.body, symbolize_names: true)
-
+require "pry"; binding.pry
         actual = json_response[:data][:userCreate][:user][:email]
 
         expect(actual).to eq("email@test.com")
       end
     end
-    
+
   describe 'sad path' do
-    describe 'passwords do not match' 
+    describe 'passwords do not match'
       it 'returns an error' do
         post graphql_path, params: { query: mutation(
           email: "email@test.com",
@@ -66,9 +66,13 @@ RSpec.describe 'create user', type: :request do
     <<~GQL
       mutation{
         userCreate(
-          email: "#{email}",
-          password: "#{password}",
-          passwordConfirmation: "#{password_confirmation}"
+          authProvider: {
+            credentials: {
+              email: "#{email}",
+              password: "#{password}",
+              passwordConfirmation: "#{password_confirmation}"
+            }
+          }
         )
         {
           user{
