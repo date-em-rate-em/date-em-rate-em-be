@@ -12,7 +12,6 @@ RSpec.describe 'create user', type: :request do
           ) }
 
         json_response = JSON.parse(response.body, symbolize_names: true)
-require "pry"; binding.pry
         actual = json_response[:data][:userCreate][:user][:email]
 
         expect(actual).to eq("email@test.com")
