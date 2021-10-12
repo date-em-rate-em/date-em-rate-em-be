@@ -3,6 +3,6 @@ module Types
     graphql_name 'AUTH_CREDENTIALS'
 
     argument:email, String, required: true
-    argument:password, String, required: true #???? password digest?
+    argument:password, String, required: true 
   end
 end
