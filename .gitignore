@@ -28,3 +28,6 @@
 
 # Ignore all coverage files for simplecov
 /coverage/*
+
+# Ignore co-commits for others
+.gitmessage
