@@ -6,9 +6,15 @@ RSpec.describe 'create review', type: :request do
     describe 'client does not exist' do
       it 'creates client and review' do
         @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
+        post graphql_path, params: { query: sign_in_mutation(
+          email: "testemail@test.com",
+          password: "testpassword"
+          )}
+        json_response = JSON.parse(response.body, symbolize_names: true)
 
+        token = json_response[:data][:signIn][:token]
 
-        post graphql_path, params: { query: mutation(user_id: @user.id, rating: 3) }
+        post graphql_path, params: { query: mutation(token: token, rating: 3) }
         json_response = JSON.parse(@response.body, symbolize_names: true)
 
         expected = [@user.id, Review.first.client_id, Review.first.id]
@@ -56,11 +62,11 @@ RSpec.describe 'create review', type: :request do
       end
     end
 
-    def mutation(user_id:, rating:)
+    def mutation(token:, rating:)
         <<~GQL
           mutation {
             reviewCreate(
-              userId: #{user_id},
+              token: #{token},
               clientEmail: "clientemail@test.com",
               rating: #{rating},
               safetyMeter: 9
@@ -78,6 +84,23 @@ RSpec.describe 'create review', type: :request do
             }
           }
         GQL
+    end
+    def sign_in_mutation(email:, password:)
+      <<~GQL
+        mutation{
+          signIn(
+            authProvider: {
+              credentials: {
+                email: "#{email}",
+                password: "#{password}"
+              }
+            }
+          )
+          {
+           token
+          }
+        }
+      GQL
     end
   end
 end
