@@ -10,13 +10,16 @@ module Mutations
 
     def resolve(auth_provider: nil)
 
-      return unless auth_provider
+      raise UserPasswordNotFound unless auth_provider
 
-      user = User.find_by!(email: auth_provider&.[](:credentials)&.[](:email))
+      user = User.find_by(email: auth_provider&.[](:credentials)&.[](:email))
 
-      return unless user.authenticate(auth_provider&.[](:credentials)&.[](:password))
+      raise UserPasswordNotFound unless user
 
-      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+      raise UserPasswordNotFound unless user.authenticate(auth_provider&.[](:credentials)&.[](:password))
+
+      key = Rails.application.credentials.secret_key_base.byteslice(0..31)
+      crypt = ActiveSupport::MessageEncryptor.new(key)
       token = crypt.encrypt_and_sign("user-id:#{user.id}")
 
       { user: user, token: token }

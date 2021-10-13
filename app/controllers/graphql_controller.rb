@@ -14,6 +14,8 @@ class GraphqlController < ApplicationController
     }
     result = DateEmRateEmBeSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
+  rescue UserPasswordNotFound => exception
+    render json: { errors: [message: exception.message], code: exception.code }, status: exception.http_status
   rescue ActiveRecord::RecordNotFound => e
     render json: { errors: [{ message: e.message}], data: {} }, status: 404
   rescue ActiveRecord::StatementInvalid => e
@@ -24,9 +26,10 @@ class GraphqlController < ApplicationController
     raise e unless Rails.env.development?
     handle_error_in_development(e)
   end
-
+  
+  
   private
-
+  
   # Handle variables in form data, JSON body, or a blank value
   def prepare_variables(variables_param)
     case variables_param
@@ -46,11 +49,11 @@ class GraphqlController < ApplicationController
       raise ArgumentError, "Unexpected parameter: #{variables_param}"
     end
   end
-
+  
   def handle_error_in_development(e)
     logger.error e.message
     logger.error e.backtrace.join("\n")
-
+    
     render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
   end
 end
