@@ -29,7 +29,20 @@ RSpec.describe 'sign in', type: :request do
           )}
           json_response = JSON.parse(response.body, symbolize_names: true)
           actual = [json_response[:errors][0][:message], response.status]
-          expected = ["Couldn't find User", 404]
+          expected = ["Email or password entered incorrectly.", 404]
+
+          expect(actual).to eq(expected)
+      end
+      it 'responds with the same error if password is incorrect' do
+        user = User.create!(email: "email@test.com", password: "password", password_confirmation: "password")
+
+        post graphql_path, params: { query: mutation(
+          email: "email@test.com",
+          password: "buttsword"
+          )}
+          json_response = JSON.parse(response.body, symbolize_names: true)
+          actual = [json_response[:errors][0][:message], response.status]
+          expected = ["Email or password entered incorrectly.", 404]
 
           expect(actual).to eq(expected)
       end
