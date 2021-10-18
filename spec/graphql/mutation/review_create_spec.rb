@@ -109,6 +109,60 @@ RSpec.describe 'create review', type: :request do
       end
     end
 
+    describe 'create client by phone number and email' do
+      describe 'client does not exist' do
+        it 'creates client and review' do
+          @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
+
+
+          post graphql_path, params: { 
+            query: mutation(
+              user_id: @user.id, 
+              rating: 3, 
+              email: 'clientemail@test.com',
+              phone: '5555555555') 
+            }
+          json_response = JSON.parse(@response.body, symbolize_names: true)
+
+          expected = [@user.id, Review.first.client_id, Review.first.id]
+
+          actual = [
+            json_response[:data][:reviewCreate][:user][:id].to_i,
+            json_response[:data][:reviewCreate][:client][:id].to_i,
+            json_response[:data][:reviewCreate][:review][:id].to_i
+          ]
+
+          expect(actual).to eq(expected)
+        end
+      end
+      describe 'client does exist' do
+        it 'creates review and assigns to client' do
+          @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
+          @client = Client.create!(phone: '5555555555', email: 'clientemail@test.com')
+
+          post graphql_path, params: { 
+            query: mutation(
+              user_id: @user.id, 
+              rating: 3, 
+              email: 'clientemail@test.com',
+              phone: '5555555555') 
+            }
+          json_response = JSON.parse(@response.body, symbolize_names: true)
+
+          expected = [@user.id, @client.email, @client.phone, Review.first.id]
+
+          actual = [
+            json_response[:data][:reviewCreate][:user][:id].to_i,
+            json_response[:data][:reviewCreate][:client][:email],
+            json_response[:data][:reviewCreate][:client][:phone],
+            json_response[:data][:reviewCreate][:review][:id].to_i
+          ]
+
+          expect(actual).to eq(expected)
+        end
+      end
+    end
+
     describe 'review does not save' do
       it 'does not save' do
         @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
@@ -149,6 +203,8 @@ RSpec.describe 'create review', type: :request do
               }
               client{
                 id
+                email
+                phone
               }
             }
           }
