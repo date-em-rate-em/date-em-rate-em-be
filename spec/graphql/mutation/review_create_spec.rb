@@ -38,8 +38,8 @@ RSpec.describe 'create review', type: :request do
             query: mutation(
               user_id: @user.id, 
               rating: 3, 
-              email: 'clientemail@test.com',
-              phone: nil) 
+              phone: nil,
+              email: 'clientemail@test.com')
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
@@ -67,7 +67,7 @@ RSpec.describe 'create review', type: :request do
               user_id: @user.id, 
               rating: 3, 
               email: nil,
-              phone: 5555555555) 
+              phone: '5555555555') 
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
@@ -85,14 +85,14 @@ RSpec.describe 'create review', type: :request do
       describe 'client does exist' do
         it 'creates review and assigns to client' do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
-          @client = Client.create!(phone: 5555555555)
+          @client = Client.create!(phone: '5555555555')
 
           post graphql_path, params: { 
             query: mutation(
               user_id: @user.id, 
               rating: 3, 
               email: nil,
-              phone: 5555555555) 
+              phone: '5555555555') 
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 

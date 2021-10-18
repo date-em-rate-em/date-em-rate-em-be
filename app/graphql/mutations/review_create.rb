@@ -3,6 +3,7 @@ module Mutations
 
     argument :user_id, ID, required: true
     argument :client_email, String, required: false
+    argument :client_phone, String, required: false
     argument :body, String, required: false
     argument :rating, Integer, required: true
     argument :size, Float, required: false
@@ -23,7 +24,8 @@ module Mutations
 
     def resolve(
         user_id:,
-        client_email:,
+        client_email: nil,
+        client_phone: nil,
         rating:,
         safety_meter:,
         body: nil,
@@ -35,15 +37,17 @@ module Mutations
         duration: nil,
         vibe: nil,
         date_again: nil,
-        gender: nil)
+        gender: nil
+      )
 
       @user = User.find(user_id)
-      if Client.where(email: client_email).empty?
-        @client = Client.create!(email: client_email)
+      if Client.where(email: client_email).empty? && Client.where(phone: client_phone).empty?
+        @client = Client.create!(email: client_email, phone: client_phone)
       else
-        @client = Client.find_by(email: client_email)
+        @client = Client.find_by(email: client_email) unless client_email == ""
+        @client = Client.find_by(phone: client_phone) unless client_phone == ""
       end
-
+      
       if size == -1
         size = nil
       end
@@ -59,8 +63,8 @@ module Mutations
       if vibe == -1
         vibe = nil
       end
-
-      @review = Review.create!(
+      
+      @review = Review.new(
         client: @client,
         user: @user,
         body: body,
