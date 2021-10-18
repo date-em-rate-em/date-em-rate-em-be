@@ -41,13 +41,21 @@ module Mutations
       )
 
       @user = User.find(user_id)
-      if Client.where(email: client_email).empty? && Client.where(phone: client_phone).empty?
-        @client = Client.create!(email: client_email, phone: client_phone)
+      if client_email != "" && client_phone != ""
+        if Client.where(email: client_email, phone: client_phone).empty? 
+          @client = Client.create!(email: client_email, phone: client_phone)
+        else
+          @client = Client.find_by(email: client_email, phone: client_phone)
+        end
       else
-        @client = Client.find_by(email: client_email) unless client_email == ""
-        @client = Client.find_by(phone: client_phone) unless client_phone == ""
+        if Client.where(email: client_email).empty? && Client.where(phone: client_phone).empty?
+          @client = Client.create!(email: client_email, phone: client_phone)
+        else
+          @client = Client.find_by(email: client_email) unless client_email == ""
+          @client = Client.find_by(phone: client_phone) unless client_phone == ""
+        end
       end
-      
+ 
       if size == -1
         size = nil
       end
