@@ -14,6 +14,7 @@ module Types
     field :average_duration, Float, null: true
     field :average_vibe, Float, null: true
     field :average_payment, Float, null: true
+    field :associated_clients, [Types::ClientType], null: true
 
     def average_rating
       self.object.reviews.average(:rating)
@@ -41,6 +42,15 @@ module Types
 
     def average_vibe
       self.object.reviews.average(:vibe)
+    end
+
+    def associated_clients
+      client = self.object
+      Client.where(email: client.email).where.not(id: client.id)
+      # client = self.object
+      # if client.email != nil
+      #   where client.phone_number = (:phone_number) or
+      # where client.email  = (:email)
     end
   end
 end
