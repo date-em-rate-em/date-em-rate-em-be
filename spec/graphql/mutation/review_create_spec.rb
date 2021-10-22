@@ -9,13 +9,14 @@ RSpec.describe 'create review', type: :request do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
 
 
-          post graphql_path, params: { 
+          post graphql_path, params: {
             query: mutation(
-              user_id: @user.id, 
-              rating: 3, 
+              user_id: @user.id,
+              rating: 3,
               email: 'clientemail@test.com',
-              phone: nil) 
+              phone: nil)
             }
+          
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
           expected = [@user.id, Review.first.client_id, Review.first.id]
@@ -34,10 +35,10 @@ RSpec.describe 'create review', type: :request do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
           @client = Client.create!(email: 'clientemail@test.com')
 
-          post graphql_path, params: { 
+          post graphql_path, params: {
             query: mutation(
-              user_id: @user.id, 
-              rating: 3, 
+              user_id: @user.id,
+              rating: 3,
               phone: nil,
               email: 'clientemail@test.com')
             }
@@ -62,12 +63,12 @@ RSpec.describe 'create review', type: :request do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
 
 
-          post graphql_path, params: { 
+          post graphql_path, params: {
             query: mutation(
-              user_id: @user.id, 
-              rating: 3, 
+              user_id: @user.id,
+              rating: 3,
               email: nil,
-              phone: '5555555555') 
+              phone: '5555555555')
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
@@ -87,12 +88,12 @@ RSpec.describe 'create review', type: :request do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
           @client = Client.create!(phone: '5555555555')
 
-          post graphql_path, params: { 
+          post graphql_path, params: {
             query: mutation(
-              user_id: @user.id, 
-              rating: 3, 
+              user_id: @user.id,
+              rating: 3,
               email: nil,
-              phone: '5555555555') 
+              phone: '5555555555')
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
@@ -115,12 +116,12 @@ RSpec.describe 'create review', type: :request do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
 
 
-          post graphql_path, params: { 
+          post graphql_path, params: {
             query: mutation(
-              user_id: @user.id, 
-              rating: 3, 
+              user_id: @user.id,
+              rating: 3,
               email: 'clientemail@test.com',
-              phone: '5555555555') 
+              phone: '5555555555')
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
@@ -140,12 +141,12 @@ RSpec.describe 'create review', type: :request do
           @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
           @client = Client.create!(phone: '5555555555', email: 'clientemail@test.com')
 
-          post graphql_path, params: { 
+          post graphql_path, params: {
             query: mutation(
-              user_id: @user.id, 
-              rating: 3, 
+              user_id: @user.id,
+              rating: 3,
               email: 'clientemail@test.com',
-              phone: '5555555555') 
+              phone: '5555555555')
             }
           json_response = JSON.parse(@response.body, symbolize_names: true)
 
@@ -168,12 +169,12 @@ RSpec.describe 'create review', type: :request do
         @user = User.create!(email: 'testemail@test.com', password: 'testpassword', password_confirmation: 'testpassword')
         @client = Client.create!(email: 'clientemail@test.com')
 
-        post graphql_path, params: { 
+        post graphql_path, params: {
           query: mutation(
-            user_id: @user.id, 
-            rating: 8, 
+            user_id: @user.id,
+            rating: 8,
             email: 'clientemail@test.com',
-            phone: nil) 
+            phone: nil)
           }
         json_response = JSON.parse(@response.body, symbolize_names: true)
 

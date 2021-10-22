@@ -41,8 +41,10 @@ module Mutations
       )
 
       @user = User.find(user_id)
-      if client_email != "" && client_phone != ""
-        if Client.where(email: client_email, phone: client_phone).empty? 
+      client_email = nil if client_email == ""
+      client_phone = nil if client_phone == ""
+      if client_email && client_phone
+        if Client.where(email: client_email, phone: client_phone).empty?
           @client = Client.create!(email: client_email, phone: client_phone)
         else
           @client = Client.find_by(email: client_email, phone: client_phone)
@@ -51,11 +53,11 @@ module Mutations
         if Client.where(email: client_email).empty? && Client.where(phone: client_phone).empty?
           @client = Client.create!(email: client_email, phone: client_phone)
         else
-          @client = Client.find_by(email: client_email) unless client_email == ""
-          @client = Client.find_by(phone: client_phone) unless client_phone == ""
+          @client = Client.find_by(email: client_email) if client_email
+          @client = Client.find_by(phone: client_phone) if client_phone
         end
       end
- 
+
       if size == -1
         size = nil
       end
@@ -71,7 +73,7 @@ module Mutations
       if vibe == -1
         vibe = nil
       end
-      
+
       @review = Review.new(
         client: @client,
         user: @user,
